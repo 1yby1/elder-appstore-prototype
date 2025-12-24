@@ -2,71 +2,159 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>安卓应用商店 - 首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>适老化安卓商店原型</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- 顶部标题 -->
-        <header class="header">
-            <h1 class="page-title">安卓应用商店</h1>
-            <div class="user-profile">
-                <span class="avatar">杨</span>
-                <span class="badge">5</span>
-            </div>
-        </header>
+    <div class="mobile-viewport">
+        <!-- 状态栏模拟 -->
+        <div class="status-bar">
+            <span>17:05</span>
+            <span>4G 🔋</span>
+        </div>
 
-        <!-- 主引导区 (高对比度) -->
-        <section class="main-action">
-            <a href="purpose.html" class="primary-btn">
-                <div class="btn-content">
-                    <span class="btn-icon">🔍</span>
-                    <span class="btn-text">我要找新应用</span>
+        <div id="app-container">
+            <!-- 页面 1: 首页 -->
+            <section id="page-home" class="page active">
+                <h1 class="page-title">安卓应用商店</h1>
+                <div class="hero-card" onclick="navigateTo('page-purpose')">
+                    <span class="hero-icon">🔍</span>
+                    <h2>我要找新应用</h2>
+                    <p>点击这里，我来帮您找</p>
                 </div>
-            </a>
-        </section>
+                <div class="search-bar-lite">
+                    <span>🔍</span>
+                    <input type="text" placeholder="请输入关键词" disabled>
+                </div>
+                <div class="grey-module">
+                    <div class="module-header"><h3>大家都在用</h3></div>
+                    <div class="grey-item"></div>
+                    <div class="grey-item"></div>
+                </div>
+            </section>
 
-        <!-- 搜索框 (次要路径) -->
-        <section class="search-section">
-            <div class="search-bar">
-                <span class="search-icon">🔍</span>
-                <input type="text" placeholder="请输入关键词" />
-            </div>
-        </section>
+            <!-- 页面 2: 选择用途 -->
+            <section id="page-purpose" class="page">
+                <div class="page-header">
+                    <button class="back-link" onclick="navigateTo('page-home')">返回</button>
+                    <h1 class="page-title-sm">你想用手机做什么？</h1>
+                </div>
+                <div class="task-grid">
+                    <div class="task-card" onclick="selectTask(this, 'family')">
+                        <span class="task-emoji">💬</span>
+                        <span class="task-label">和家人聊天</span>
+                    </div>
+                    <div class="task-card" onclick="selectTask(this, 'health')">
+                        <span class="task-emoji">❤️</span>
+                        <span class="task-label">查看健康数据</span>
+                    </div>
+                    <div class="task-card" onclick="selectTask(this, 'pay')">
+                        <span class="task-emoji">💰</span>
+                        <span class="task-label">支付与转账</span>
+                    </div>
+                    <div class="task-card" onclick="selectTask(this, 'video')">
+                        <span class="task-emoji">🎬</span>
+                        <span class="task-label">看新闻视频</span>
+                    </div>
+                </div>
+                <div class="bottom-action">
+                    <button id="btn-purpose-next" class="big-btn disabled" onclick="navigateTo('page-recommend')">下一步</button>
+                </div>
+            </section>
 
-        <!-- 弱视觉模块: 推荐与排行 -->
-        <section class="secondary-modules">
-            <div class="module-header">
-                <h2>推荐 / 排行榜</h2>
-                <span class="more-link">更多 ></span>
-            </div>
-            <div class="gray-cards">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-        </section>
+            <!-- 页面 3: 推荐应用 -->
+            <section id="page-recommend" class="page">
+                <h1 class="page-title">为您推荐应用</h1>
+                <div class="main-card recommend">
+                    <div class="app-info-row">
+                        <div class="app-icon green"></div>
+                        <div>
+                            <div class="app-name">微信</div>
+                            <div class="tag">用途：与家人聊天</div>
+                        </div>
+                    </div>
+                    <p class="reason-box"><b>推荐理由：</b><br>使用人数多，可以直接发语音，操作非常简单。</p>
+                    <button class="big-btn" onclick="navigateTo('page-details')">选择这个应用</button>
+                </div>
+                <div class="sub-recommend">
+                    <p>其他选择：</p>
+                    <div class="sub-item">QQ (功能类似)</div>
+                </div>
+            </section>
 
-        <!-- 底部导航 (参考图片) -->
-        <nav class="tab-bar">
-            <div class="tab-item active">
-                <div class="icon">🏠</div>
-                <span>首页</span>
-            </div>
-            <div class="tab-item">
-                <div class="icon">🚀</div>
-                <span>游戏</span>
-            </div>
-            <div class="tab-item">
-                <div class="icon">📦</div>
-                <span>应用</span>
-            </div>
-            <div class="tab-item">
-                <div class="icon">🔍</div>
-                <span>搜索</span>
-            </div>
+            <!-- 页面 4: 应用详情 -->
+            <section id="page-details" class="page">
+                <div class="app-detail-header">
+                    <div class="app-icon-lg green">💬</div>
+                    <h1 class="app-name-lg">微信</h1>
+                </div>
+                <div class="trust-list">
+                    <div class="trust-item">✅ 官方应用</div>
+                    <div class="trust-item">✅ 免费</div>
+                    <div class="trust-item">✅ 高下载量</div>
+                </div>
+                <div class="bottom-action">
+                    <button class="big-btn" onclick="navigateTo('page-permissions')">安 装</button>
+                    <button class="back-arrow" onclick="navigateTo('page-recommend')">⬇ 返回</button>
+                </div>
+            </section>
+
+            <!-- 页面 5: 授权认证 -->
+            <section id="page-permissions" class="page">
+                <h1 class="page-title">在使用前，需要您确认</h1>
+                <p class="subtitle">您可以自己选择，不会影响手机安全</p>
+                <div class="perm-list">
+                    <div class="perm-card">
+                        <span>📸 允许拍摄照片</span>
+                        <div class="toggle on"></div>
+                    </div>
+                    <div class="perm-card">
+                        <span>🎤 允许发送语音</span>
+                        <div class="toggle on"></div>
+                    </div>
+                    <div class="perm-card">
+                        <span>👥 允许查找好友</span>
+                        <div class="toggle off"></div>
+                    </div>
+                </div>
+                <div class="bottom-action">
+                    <button class="big-btn green" onclick="navigateTo('page-complete')">全部确认并安装</button>
+                </div>
+            </section>
+
+            <!-- 页面 6: 安装完成 -->
+            <section id="page-complete" class="page center-content">
+                <div class="celebrate">🎉</div>
+                <h1 class="status-title">安装完成</h1>
+                <p class="status-desc">现在你可以开始使用了</p>
+                <div class="btn-group">
+                    <button class="big-btn" onclick="navigateTo('page-guide')">打开应用</button>
+                    <button class="big-btn secondary" onclick="navigateTo('page-guide')">想看操作指南</button>
+                </div>
+            </section>
+
+            <!-- 页面 7: 应用使用引导 -->
+            <section id="page-guide" class="page">
+                <div id="guide-content">
+                    <!-- JS 动态注入 -->
+                </div>
+                <div class="guide-footer">
+                    <button id="btn-guide-next" class="big-btn" onclick="nextGuideStep()">下一步</button>
+                    <button class="help-link" onclick="resetGuide()">我不知道怎么用</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- 底部导航 (仅首页显示) -->
+        <nav id="main-nav" class="tab-bar">
+            <div class="tab-item active">🏠 Today</div>
+            <div class="tab-item">🚀 游戏</div>
+            <div class="tab-item">📦 App</div>
+            <div class="tab-item">🔍 搜索</div>
         </nav>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
