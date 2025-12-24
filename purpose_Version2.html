@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择用途</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <a href="index.html" class="back-btn"> < 返回 </a>
+            <h1 class="page-title-center">你想用手机做什么？</h1>
+        </header>
+
+        <!-- 任务选项网格 -->
+        <section class="task-grid">
+            <div class="task-card" onclick="selectTask(this)">
+                <div class="task-icon">💬</div>
+                <div class="task-name">和家人聊天</div>
+            </div>
+            <div class="task-card" onclick="selectTask(this)">
+                <div class="task-icon">🏥</div>
+                <div class="task-name">查看健康数据</div>
+            </div>
+            <div class="task-card" onclick="selectTask(this)">
+                <div class="task-icon">💰</div>
+                <div class="task-name">支付与转账</div>
+            </div>
+            <div class="task-card" onclick="selectTask(this)">
+                <div class="task-icon">📺</div>
+                <div class="task-name">看新闻视频</div>
+            </div>
+        </section>
+
+        <!-- 底部固定按钮 -->
+        <footer class="footer-action">
+            <button class="next-btn" id="nextBtn" disabled onclick="alert('即将跳转到页面3')">下一步</button>
+        </footer>
+    </div>
+
+    <script>
+        function selectTask(element) {
+            // 清除之前的选择
+            document.querySelectorAll('.task-card').forEach(card => card.classList.remove('selected'));
+            // 选中当前
+            element.classList.add('selected');
+            // 激活下一步按钮
+            document.getElementById('nextBtn').disabled = false;
+        }
+    </script>
+</body>
+</html>
