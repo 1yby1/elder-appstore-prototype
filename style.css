@@ -1,0 +1,76 @@
+:root {
+    --ios-blue: #007AFF;
+    --ios-green: #34C759;
+    --ios-gray: #F2F2F7;
+    --text-main: #000;
+    --text-sub: #8E8E93;
+}
+
+body {
+    margin: 0; padding: 0; background: #333;
+    font-family: -apple-system, sans-serif;
+    display: flex; justify-content: center; align-items: center; min-height: 100vh;
+}
+
+.mobile-viewport {
+    width: 375px; height: 812px; background: var(--ios-gray);
+    border-radius: 40px; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.status-bar { height: 44px; padding: 0 30px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 14px; }
+
+.page { display: none; flex: 1; flex-direction: column; padding: 20px; overflow-y: auto; }
+.page.active { display: flex; }
+
+/* 字体与标题 */
+.page-title { font-size: 34px; font-weight: 800; margin: 20px 0; }
+.page-title-sm { font-size: 24px; font-weight: 800; text-align: center; }
+
+/* 卡片样式 */
+.hero-card {
+    background: linear-gradient(135deg, #007AFF, #0051FF);
+    color: white; padding: 30px 20px; border-radius: 24px;
+    text-align: center; cursor: pointer; margin-bottom: 20px;
+}
+.hero-icon { font-size: 40px; display: block; margin-bottom: 10px; }
+
+/* 按钮 */
+.big-btn {
+    background: var(--ios-blue); color: white; border: none;
+    border-radius: 18px; padding: 22px; font-size: 22px; font-weight: bold;
+    width: 100%; cursor: pointer; transition: 0.2s;
+}
+.big-btn.secondary { background: #E5E5EA; color: #000; margin-top: 15px; }
+.big-btn.disabled { opacity: 0.3; pointer-events: none; }
+.big-btn.green { background: var(--ios-green); }
+
+/* 任务网格 */
+.task-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.task-card {
+    background: white; border-radius: 20px; padding: 25px 10px;
+    text-align: center; border: 3px solid transparent; cursor: pointer;
+}
+.task-card.selected { border-color: var(--ios-blue); background: #F0F7FF; }
+.task-emoji { font-size: 40px; display: block; margin-bottom: 10px; }
+
+/* 权限与详情 */
+.perm-card {
+    background: white; margin-bottom: 10px; padding: 20px;
+    border-radius: 15px; display: flex; justify-content: space-between; align-items: center;
+    font-size: 18px; font-weight: bold;
+}
+.toggle { width: 50px; height: 30px; border-radius: 15px; position: relative; }
+.toggle.on { background: var(--ios-green); }
+.toggle.off { background: #D1D1D6; }
+
+/* 导航 */
+.tab-bar {
+    height: 83px; background: rgba(255,255,255,0.9);
+    border-top: 0.5px solid #CCC; display: flex; justify-content: space-around; padding-top: 10px;
+}
+.tab-item { font-size: 10px; color: var(--text-sub); text-align: center; }
+.tab-item.active { color: var(--ios-blue); }
+
+.center-content { justify-content: center; align-items: center; text-align: center; }
+.celebrate { font-size: 80px; }
